@@ -35,8 +35,8 @@ const handleSend = async () => {
     })
     });
     const resdata = await response.json();
-    console.log(resdata);
-    setChat([...chat, {role:"assistant", content:resdata.choices[0].message}]);
+  
+    setChat([...chat, resdata?.choices?.[0]?.message]);
 
   }
 };
@@ -115,7 +115,7 @@ const handleSend = async () => {
                   )}
                 </span>
                 {/* Displaying the chat message */}
-                <div className="leading-loose">{item.message}</div>
+                <div className="leading-loose">{item.content}</div>
               </div>
             ))}
           </div>
